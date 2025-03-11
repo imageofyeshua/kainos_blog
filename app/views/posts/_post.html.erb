@@ -3,7 +3,7 @@
   <%= post.title %>
   <p class="text-gray-500">
     posted by
-    <%= post.user.email %>
+    <%= link_to post.user.name, user_path(post.user) %>
   </p>
   <strong class="block font-medium mb-1 text-orange-500">Body:</strong>
   <%= post.body %>
