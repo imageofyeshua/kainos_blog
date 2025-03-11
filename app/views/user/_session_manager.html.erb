@@ -14,7 +14,7 @@
     data-dropdown-toggle="user-dropdown"
     data-dropdown-placement="bottom"
   >
-    <span class="sr-only">Open user menu</span>
+    <span class="sr-only"><%= current_user.name %></span>
     <%= image_tag("man.png", class: "w-8 h-8 rounded-full", alt: "user photo") %>
   </button>
   <!-- Dropdown menu -->
@@ -26,8 +26,8 @@
     id="user-dropdown"
   >
     <div class="px-4 py-3">
-      <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-      <span class="block text-sm text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+      <span class="block text-sm text-gray-900 dark:text-white"><%= current_user.name %></span>
+      <span class="block text-sm text-gray-500 truncate dark:text-gray-400"><%= current_user.email %></span>
     </div>
     <ul class="py-2" aria-labelledby="user-menu-button">
       <li>
