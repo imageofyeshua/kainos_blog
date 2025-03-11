@@ -11,6 +11,7 @@ gem "tailwindcss-rails"
 gem "jbuilder"
 gem "faker"
 gem "devise"
+gem "tailwind_devise", "~> 0.0.3"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
