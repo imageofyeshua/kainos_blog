@@ -55,7 +55,10 @@
       </ul>
     </div>
     <% if current_user %>
-      <%= render "user/session_manager" %>
+      <div class="block flex gap-2">
+        <%= render "layouts/notifications" %>
+        <%= render "user/session_manager" %>
+      </div>
     <% end %>
   </div>
 </nav>

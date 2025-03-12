@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   def show
     @post.update(views: @post.views + 1)
     @comments = @post.comments.order(created_at: :desc)
+    mark_notifications_as_read
   end
 
   # GET /posts/new
@@ -53,7 +54,8 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy!
+    @post.comments.destroy_all
+    @post.delete
 
     respond_to do |format|
       format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
@@ -71,5 +73,12 @@ class PostsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def post_params
     params.expect(post: [:title, :body])
+  end
+
+  def mark_notifications_as_read
+    return unless current_user
+
+    notifications_to_mark_as_read = @post.notifications.where(recipient: current_user)
+    notifications_to_mark_as_read.update_all(read_at: Time.zone.now)
   end
 end
