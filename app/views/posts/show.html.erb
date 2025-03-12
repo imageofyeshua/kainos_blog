@@ -5,26 +5,28 @@
 
   <%= render @post %>
 
-  <%= link_to "Edit this post",
-  edit_post_path(@post),
-  class:
-    "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <% if current_user == @post.user %>
+    <%= link_to "Edit this post",
+    edit_post_path(@post),
+    class:
+      "w-full sm:w-auto text-center rounded-md px-2.5 py-1.5 bg-gray-300 hover:bg-gray-200 inline-block font-medium" %>
+    <div class="sm:inline-block mt-2 sm:mt-0 sm:ml-2">
+      <%= button_to "Destroy this post",
+      @post,
+      method: :delete,
+      class:
+        "w-full rounded-md px-2.5 py-1.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer",
+      data: {
+        turbo_confirm: "Are you sure?",
+      } %>
+    </div>
+  <% end %>
   <%= link_to "Back to posts",
   posts_path,
   class:
-    "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <div class="sm:inline-block mt-2 sm:mt-0 sm:ml-2">
-    <%= button_to "Destroy this post",
-    @post,
-    method: :delete,
-    class:
-      "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer",
-    data: {
-      turbo_confirm: "Are you sure?",
-    } %>
-  </div>
+    "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-2.5 py-1.5 bg-blue-300 hover:bg-blue-200 inline-block font-medium" %>
   <div class="mt-4">
-    <%= render "comments/form", post: @post %>
+    <%= render "comments/form", post: @post, comment: @post.comments.build %>
     <% @comments.each do |comment| %>
       <%= render "comments/comment", post: @post, comment: comment %>
     <% end %>

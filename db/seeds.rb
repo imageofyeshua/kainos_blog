@@ -8,7 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create(email: "admin@test.com", password: "asdfasdf", password_confirmation: "asdfasdf")
+User.create(email: "admin@test.com", name: "Daniel Park", password: "asdfasdf", password_confirmation: "asdfasdf")
+User.create(email: "guest@test.com", name: "Guest Choi", password: "asdfasdf", password_confirmation: "asdfasdf")
 
 (1..10).each do |id|
   Post.create(title: Faker::Book.title, body: Faker::Quote.famous_last_words, user_id: User.first.id)
