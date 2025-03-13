@@ -12,6 +12,9 @@ gem "jbuilder"
 gem "faker"
 gem "devise"
 gem "tailwind_devise", "~> 0.0.3"
+gem "image_processing", "~> 1.14"
+gem "noticed", "~> 2.6"
+gem "ransack", "~> 4.3"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -37,7 +40,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "image_processing", "~> 1.14"
-
-gem "noticed", "~> 2.6"
