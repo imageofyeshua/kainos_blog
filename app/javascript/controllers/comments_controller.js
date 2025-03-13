@@ -11,11 +11,25 @@ export default class extends Controller {
         console.log("I clicked the edit button")
         event.preventDefault();
         event.stopPropagation();
+
         const formID = event.params["form"];
         const commentBodyID = event.params["body"];
+        const editButtonID = event.params["edit"];
+
         const form = document.getElementById(formID);
-        form.classList.toggle("hidden");
         const commentBody = document.getElementById(commentBodyID);
+        const editButton = document.getElementById(editButtonID);
+
+        form.classList.toggle("hidden");
         commentBody.classList.toggle("hidden");
+        this.toggleEditButton(editButton);
+    }
+
+    toggleEditButton(editButton) {
+        if (editButton.innerText === "Edit") {
+            editButton.innerText = "Cancel";
+        } else {
+            editButton.innerText = "Edit";
+        }
     }
 }
