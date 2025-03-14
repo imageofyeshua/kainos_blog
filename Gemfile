@@ -15,6 +15,7 @@ gem "tailwind_devise", "~> 0.0.3"
 gem "image_processing", "~> 1.14"
 gem "noticed", "~> 2.6"
 gem "ransack", "~> 4.3"
+gem "rolify", "~> 6.0"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
